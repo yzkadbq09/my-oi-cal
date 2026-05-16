@@ -1,0 +1,676 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:ics.py - http://git.io/lLljaA
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://basecamp.eolymp.com/contests/vjciul0f8l2jba12rnrellppv0\n数据来源: Clist.by
+DTEND:20260517T120000Z
+DTSTART:20260517T100000Z
+SUMMARY:[AtCoder] Blitz Round #20
+UID:dc8b43fe-1ebe-4840-a73a-6a78b52531a2@dc8b.org
+URL:https://basecamp.eolymp.com/contests/vjciul0f8l2jba12rnrellppv0
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://toph.co/c/tough-dash-may-2026\n数据来源: Clist.by
+DTEND:20260528T170000Z
+DTSTART:20260528T162000Z
+SUMMARY:[AtCoder] Tough Dash\, May 2026
+UID:de188d35-96af-4c53-b2c5-dfcd9fa43ca5@de18.org
+URL:https://toph.co/c/tough-dash-may-2026
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.codechef.com/START240\n数据来源: Clist.by
+DTEND:20260527T163000Z
+DTSTART:20260527T143000Z
+SUMMARY:[AtCoder] Starters 240
+UID:ce5a45a8-9381-4cdc-9404-33063cf8de86@ce5a.org
+URL:https://www.codechef.com/START240
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/contests/2229\n数据来源: Clist.by
+DTEND:20260523T173500Z
+DTSTART:20260523T143500Z
+SUMMARY:[CF] Spectral::Cup 2026 Round 2 (Codeforces Round\, Div. 1 + Div. 2)
+UID:859e6f8a-bfe6-4faa-a4eb-915b9ebb31c0@859e.org
+URL:https://codeforces.com/contests/2229
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/arc220\n数据来源: Clist.by
+DTEND:20260517T143000Z
+DTSTART:20260517T120000Z
+SUMMARY:[AtCoder] AtCoder Regular Contest++ 220
+UID:980e0055-9362-44d8-b17f-34d451bb2b87@980e.org
+URL:https://atcoder.jp/contests/arc220
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://repovive.com/contests\n数据来源: Clist.by
+DTEND:20260517T163500Z
+DTSTART:20260517T143500Z
+SUMMARY:[AtCoder] Repovive Standard Round 3
+UID:160ae851-ba29-4294-9aa9-1abaf1df5f4e@160a.org
+URL:https://repovive.com/contests
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/contests/2231\n数据来源: Clist.by
+DTEND:20260521T163500Z
+DTSTART:20260521T143500Z
+SUMMARY:[CF] Codeforces Round (Div. 2)
+UID:8e237ee9-4b4a-4e3c-9808-59914f3eab58@8e23.org
+URL:https://codeforces.com/contests/2231
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260517T110000Z
+DTSTART:20260517T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:2b52ba7e-3dc8-412f-9e8b-0674d1e75bc6@2b52.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://projecteuler.net/news\n数据来源: Clist.by
+DTEND:20260517T090000Z
+DTSTART:20260517T090000Z
+SUMMARY:[AtCoder] Problem 997
+UID:7a4675bc-26b9-4d3f-8a28-ad8674cea2cd@7a46.org
+URL:https://projecteuler.net/news
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3278/\n数据来源: Clist.by
+DTEND:20260608T170000Z
+DTSTART:20260605T170000Z
+SUMMARY:[AtCoder] RPCA CTF 2026
+UID:fac903c8-2890-45e5-a997-9d4c1d13d499@fac9.org
+URL:https://ctftime.org/event/3278/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/contests/2230\n数据来源: Clist.by
+DTEND:20260518T163500Z
+DTSTART:20260518T143500Z
+SUMMARY:[CF] Educational Codeforces Round 190 (Rated for Div. 2)
+UID:7447683c-78a8-45b5-93cd-9d596d6b7e14@7447.org
+URL:https://codeforces.com/contests/2230
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://projecteuler.net/news\n数据来源: Clist.by
+DTEND:20260530T150000Z
+DTSTART:20260530T150000Z
+SUMMARY:[AtCoder] Problem 999
+UID:17fe0531-978b-4a53-8cbd-4a398d98cbdb@17fe.org
+URL:https://projecteuler.net/news
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3270/\n数据来源: Clist.by
+DTEND:20260530T171500Z
+DTSTART:20260529T101500Z
+SUMMARY:[AtCoder] Hackअस्त्र
+UID:62f97b1e-b551-4b43-9c6e-ec902077a016@62f9.org
+URL:https://ctftime.org/event/3270/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3222/\n数据来源: Clist.by
+DTEND:20260621T180000Z
+DTSTART:20260619T180000Z
+SUMMARY:[AtCoder] Google Capture The Flag 2026
+UID:206af3a8-5b72-4852-98ff-f948b176329e@206a.org
+URL:https://ctftime.org/event/3222/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3113/\n数据来源: Clist.by
+DTEND:20260629T080000Z
+DTSTART:20260627T080000Z
+SUMMARY:[AtCoder] SekaiCTF 2026
+UID:42d5a174-0de1-4955-95e4-dcf90d3789d6@42d5.org
+URL:https://ctftime.org/event/3113/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc461\n数据来源: Clist.by
+DTEND:20260606T134000Z
+DTSTART:20260606T120000Z
+SUMMARY:[AtCoder] AtCoder Beginner Contest 461
+UID:d62630cc-b3e1-4ce5-a390-57c552ef1737@d626.org
+URL:https://atcoder.jp/contests/abc461
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://projecteuler.net/news\n数据来源: Clist.by
+DTEND:20260606T180000Z
+DTSTART:20260606T180000Z
+SUMMARY:[AtCoder] Problem 1000
+UID:1a2ba480-7046-4d92-b3e3-4dd0078540a9@1a2b.org
+URL:https://projecteuler.net/news
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://repovive.com/contests\n数据来源: Clist.by
+DTEND:20260524T173500Z
+DTSTART:20260524T143500Z
+SUMMARY:[AtCoder] Repovive Premier Round 4
+UID:5623f5c6-75a1-4b6c-b5a7-a8acd86568f3@5623.org
+URL:https://repovive.com/contests
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3178/\n数据来源: Clist.by
+DTEND:20260531T020000Z
+DTSTART:20260530T020000Z
+SUMMARY:[AtCoder] Grey Cat The Flag 2026 Qualifiers
+UID:546dc4dd-99b3-4169-b3ca-7354453d98b1@546d.org
+URL:https://ctftime.org/event/3178/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3174/\n数据来源: Clist.by
+DTEND:20260530T205000Z
+DTSTART:20260529T170000Z
+SUMMARY:[AtCoder] Hardwear.io USA 2026 Hardware CTF
+UID:2cbf7ee8-afb1-4dce-a4ef-265bb1d3c0f5@2cbf.org
+URL:https://ctftime.org/event/3174/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3246/\n数据来源: Clist.by
+DTEND:20260622T100000Z
+DTSTART:20260619T100000Z
+SUMMARY:[AtCoder] BCACTF 7.0
+UID:825b2ee1-a981-4139-bc1e-0def964c72f2@825b.org
+URL:https://ctftime.org/event/3246/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3269/\n数据来源: Clist.by
+DTEND:20260520T040000Z
+DTSTART:20260518T040000Z
+SUMMARY:[AtCoder] 0xV01D CTF 2026
+UID:ef8b7b45-0ef1-42f8-9978-fd5e49d8f17c@ef8b.org
+URL:https://ctftime.org/event/3269/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3136/\n数据来源: Clist.by
+DTEND:20260524T140000Z
+DTSTART:20260523T140000Z
+SUMMARY:[AtCoder] SecLeaf Q2 CTF 2026
+UID:04ba10b8-e68b-41c8-9fce-89d460917414@04ba.org
+URL:https://ctftime.org/event/3136/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3061/\n数据来源: Clist.by
+DTEND:20260712T180000Z
+DTSTART:20260710T180000Z
+SUMMARY:[AtCoder] L3akCTF 2026
+UID:6d9eafdd-f41e-4e2e-bc2d-1db5005cc8ff@6d9e.org
+URL:https://ctftime.org/event/3061/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3214/\n数据来源: Clist.by
+DTEND:20260517T130000Z
+DTSTART:20260517T050000Z
+SUMMARY:[AtCoder] UralCUP 2026
+UID:5540a563-e61b-4861-8861-9f84f6c06f10@5540.org
+URL:https://ctftime.org/event/3214/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ac.nowcoder.com/acm/contest/135365\n数据来源: Clist.by
+DTEND:20260529T130000Z
+DTSTART:20260529T110000Z
+SUMMARY:[AtCoder] 牛客小白月赛133 [ACM]
+UID:032d6c05-6a03-460a-994b-512d0d0b52a1@032d.org
+URL:https://ac.nowcoder.com/acm/contest/135365
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3249/\n数据来源: Clist.by
+DTEND:20260628T140000Z
+DTSTART:20260627T020000Z
+SUMMARY:[AtCoder] V1T CTF 2026
+UID:7966b427-82c3-4c77-95a8-bedb1ca19e15@7966.org
+URL:https://ctftime.org/event/3249/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3209/\n数据来源: Clist.by
+DTEND:20260531T180000Z
+DTSTART:20260529T180000Z
+SUMMARY:[AtCoder] THEM?!CTF 2026
+UID:a5e48e36-8ab3-4fe8-aa47-ec2a0b219768@a5e4.org
+URL:https://ctftime.org/event/3209/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ac.nowcoder.com/acm/contest/135295\n数据来源: Clist.by
+DTEND:20260601T130000Z
+DTSTART:20260601T110000Z
+SUMMARY:[AtCoder] 牛客2026年儿童节比赛 [ACM]
+UID:9ba13a8d-f187-41f7-97dd-756151f569c7@9ba1.org
+URL:https://ac.nowcoder.com/acm/contest/135295
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/arc221\n数据来源: Clist.by
+DTEND:20260531T143000Z
+DTSTART:20260531T120000Z
+SUMMARY:[AtCoder] AtCoder Regular Contest++ 221
+UID:c451fa09-5e70-4b59-a1df-8226662a19c2@c451.org
+URL:https://atcoder.jp/contests/arc221
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://projecteuler.net/news\n数据来源: Clist.by
+DTEND:20260523T120000Z
+DTSTART:20260523T120000Z
+SUMMARY:[AtCoder] Problem 998
+UID:b8960f82-8b06-47dd-9977-5bd690a6729b@b896.org
+URL:https://projecteuler.net/news
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3109/\n数据来源: Clist.by
+DTEND:20260607T120000Z
+DTSTART:20260606T120000Z
+SUMMARY:[AtCoder] SAS CTF 2026 Quals
+UID:5ad00c7e-6e22-4041-b1ba-a55494251446@5ad0.org
+URL:https://ctftime.org/event/3109/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260621T110000Z
+DTSTART:20260621T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:8e1a6c0a-65e8-4aa2-b322-ffee50c475fb@8e1a.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3149/\n数据来源: Clist.by
+DTEND:20260706T020000Z
+DTSTART:20260704T020000Z
+SUMMARY:[AtCoder] R3CTF 2026
+UID:46c4066f-5b99-4dc4-ba53-760a97a0cfb2@46c4.org
+URL:https://ctftime.org/event/3149/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3272/\n数据来源: Clist.by
+DTEND:20260615T010000Z
+DTSTART:20260613T010000Z
+SUMMARY:[AtCoder] Anti-Slop CTF 2026
+UID:d97196db-2541-4960-8f9a-4297e89ccca1@d971.org
+URL:https://ctftime.org/event/3272/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ac.nowcoder.com/acm/contest/134981\n数据来源: Clist.by
+DTEND:20260524T130000Z
+DTSTART:20260524T110000Z
+SUMMARY:[AtCoder] 牛客周赛 Round 145 [IOI]
+UID:17fbfac1-62d7-4577-9751-bc396dfbeb4f@17fb.org
+URL:https://ac.nowcoder.com/acm/contest/134981
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3173/\n数据来源: Clist.by
+DTEND:20260628T020000Z
+DTSTART:20260627T020000Z
+SUMMARY:[AtCoder] Grey Cat The Flag 2026 Finals
+UID:b3e7f633-9dc9-45c5-892b-04d6b13189ae@b3e7.org
+URL:https://ctftime.org/event/3173/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://uoj.ac/contest/107\n数据来源: Clist.by
+DTEND:20260524T140000Z
+DTSTART:20260524T100000Z
+SUMMARY:[AtCoder] UOJ Round #34
+UID:d57b3cea-b604-4df2-9b5b-20ad65e75698@d57b.org
+URL:https://uoj.ac/contest/107
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ac.nowcoder.com/acm/contest/134820\n数据来源: Clist.by
+DTEND:20260522T133000Z
+DTSTART:20260522T110000Z
+SUMMARY:[AtCoder] 牛客练习赛153 [ACM]
+UID:2e4692bf-2768-41fc-b6ee-68b1820e6dcc@2e46.org
+URL:https://ac.nowcoder.com/acm/contest/134820
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260614T110000Z
+DTSTART:20260614T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:a84354ce-6209-4fed-ae66-f1e276c00e77@a843.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/contests/2232\n数据来源: Clist.by
+DTEND:20260530T163500Z
+DTSTART:20260530T143500Z
+SUMMARY:[CF] Codeforces Round (Div. 2)
+UID:34447550-ccb8-4c01-a028-0067c74d8091@3444.org
+URL:https://codeforces.com/contests/2232
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/arc222\n数据来源: Clist.by
+DTEND:20260614T140000Z
+DTSTART:20260614T120000Z
+SUMMARY:[AtCoder] AtCoder Regular Contest 222
+UID:ae5d319d-e04d-4d53-b201-4b437c6a6a32@ae5d.org
+URL:https://atcoder.jp/contests/arc222
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3271/\n数据来源: Clist.by
+DTEND:20260524T163000Z
+DTSTART:20260524T043000Z
+SUMMARY:[AtCoder] ZEROBREACH CTF
+UID:69e593b8-8383-4b23-b373-e7a87a436dcd@69e5.org
+URL:https://ctftime.org/event/3271/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260527T110000Z
+DTSTART:20260527T040000Z
+SUMMARY:[AtCoder] Подготовка к отбору на IOI 2026
+UID:0c835903-850e-406c-b9d2-e3327e23af3f@0c83.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3205/\n数据来源: Clist.by
+DTEND:20260524T210000Z
+DTSTART:20260522T210000Z
+SUMMARY:[AtCoder] DEF CON CTF Qualifier 2026
+UID:1a6f2307-0db5-4efe-b31e-d8941e0867f2@1a6f.org
+URL:https://ctftime.org/event/3205/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/c-league2026-1-open\n数据来源: Clist.by
+DTEND:20260522T130000Z
+DTSTART:20260522T110000Z
+SUMMARY:[AtCoder] AtCoder 企業対抗リーグ 2026 第1戦(オープンコンテスト)
+UID:ef83f3a3-51b9-4a82-b78e-1338103f3ef3@ef83.org
+URL:https://atcoder.jp/contests/c-league2026-1-open
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://leetcode.com/contest/weekly-contest-503\n数据来源: Clist.by
+DTEND:20260524T040000Z
+DTSTART:20260524T023000Z
+SUMMARY:[AtCoder] Weekly Contest 503
+UID:1163b59d-a6e2-4576-8367-4bb1fcaea450@1163.org
+URL:https://leetcode.com/contest/weekly-contest-503
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260524T110000Z
+DTSTART:20260524T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:e671be6e-6687-4153-b96d-689136b5a23d@e671.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3220/\n数据来源: Clist.by
+DTEND:20260530T180000Z
+DTSTART:20260530T090000Z
+SUMMARY:[AtCoder] Pwn2Play Open CTF
+UID:64f7744c-1692-4129-b987-2c3a1b08f49e@64f7.org
+URL:https://ctftime.org/event/3220/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc459\n数据来源: Clist.by
+DTEND:20260523T134000Z
+DTSTART:20260523T120000Z
+SUMMARY:[AtCoder] Tokio Marine & Nichido Fire Insurance Programming Contest 2026 (AtCoder Beginner Contest 459)
+UID:19de8be2-d791-49c7-b5fc-f1f1464c4e88@19de.org
+URL:https://atcoder.jp/contests/abc459
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc458\n数据来源: Clist.by
+DTEND:20260516T134000Z
+DTSTART:20260516T120000Z
+SUMMARY:[AtCoder] AtCoder Beginner Contest 458
+UID:5b5f8054-4907-417a-bd73-5ddd205a0fd7@5b5f.org
+URL:https://atcoder.jp/contests/abc458
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260712T110000Z
+DTSTART:20260712T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:e972f31f-a74d-4424-9bd1-5c6f35a478c7@e972.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.codechef.com/DSAMONDAY003\n数据来源: Clist.by
+DTEND:20260518T153000Z
+DTSTART:20260518T123000Z
+SUMMARY:[AtCoder] Monday Munch - DSA Challenge 003 (Rated)
+UID:96eab5fe-5115-4fd7-b3a7-f50f74f23ed3@96ea.org
+URL:https://www.codechef.com/DSAMONDAY003
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3034/\n数据来源: Clist.by
+DTEND:20260614T140000Z
+DTSTART:20260613T140000Z
+SUMMARY:[AtCoder] Crypto CTF 2026
+UID:bcfe281a-522f-4e70-a140-76616ec121dd@bcfe.org
+URL:https://ctftime.org/event/3034/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/ahc066\n数据来源: Clist.by
+DTEND:20260608T100000Z
+DTSTART:20260529T100000Z
+SUMMARY:[AtCoder] AtCoder Heuristic Contest 066
+UID:3e28635c-5a0e-4013-8d0d-95c99b616293@3e28.org
+URL:https://atcoder.jp/contests/ahc066
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260705T110000Z
+DTSTART:20260705T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:f62fae2c-6193-4a91-9242-b5df81309a64@f62f.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ac.nowcoder.com/acm/contest/134957\n数据来源: Clist.by
+DTEND:20260517T130000Z
+DTSTART:20260517T110000Z
+SUMMARY:[AtCoder] 牛客周赛 Round 144 [IOI]
+UID:13c9cc08-3b64-45be-ad25-4eb0e36bdfb3@13c9.org
+URL:https://ac.nowcoder.com/acm/contest/134957
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://practice.geeksforgeeks.org/contest/codenova/\n数据来源: Clist.by
+DTEND:20260517T153000Z
+DTSTART:20260517T133000Z
+SUMMARY:[AtCoder] CodeNova
+UID:7bbf2b1e-98a2-42ff-9373-3906b9e287f9@7bbf.org
+URL:https://practice.geeksforgeeks.org/contest/codenova/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.naukri.com/code360/contests/beginner-contest-113\n数据来源: Clist.by
+DTEND:20260527T170000Z
+DTSTART:20260527T153000Z
+SUMMARY:[AtCoder] Beginner Contest 113
+UID:e317dfba-e058-43ef-bd31-86740ba1c287@e317.org
+URL:https://www.naukri.com/code360/contests/beginner-contest-113
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.naukri.com/code360/contests/weekly-contest-231\n数据来源: Clist.by
+DTEND:20260521T170100Z
+DTSTART:20260521T150100Z
+SUMMARY:[AtCoder] Weekly Contest 231
+UID:248bac18-0818-4c16-97b6-ef3fcad2c443@248b.org
+URL:https://www.naukri.com/code360/contests/weekly-contest-231
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.codechef.com/START241\n数据来源: Clist.by
+DTEND:20260603T163000Z
+DTSTART:20260603T143000Z
+SUMMARY:[AtCoder] Starters 241
+UID:4b994485-0fec-4e22-8837-2b27ef30f795@4b99.org
+URL:https://www.codechef.com/START241
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/c-league2026-1\n数据来源: Clist.by
+DTEND:20260522T130000Z
+DTSTART:20260522T110000Z
+SUMMARY:[AtCoder] AtCoder 企業対抗リーグ 2026 第1戦
+UID:eb7d36d3-4a81-42bd-b5b9-bec5e4392a75@eb7d.org
+URL:https://atcoder.jp/contests/c-league2026-1
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc462\n数据来源: Clist.by
+DTEND:20260613T134000Z
+DTSTART:20260613T120000Z
+SUMMARY:[AtCoder] CodeQUEEN 2026 -qual- (AtCoder Beginner Contest 462)
+UID:04472bd5-ec06-4c87-b772-2cfe1f63af92@0447.org
+URL:https://atcoder.jp/contests/abc462
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260603T110000Z
+DTSTART:20260603T040000Z
+SUMMARY:[AtCoder] Подготовка к отбору на IOI 2026
+UID:4f39ab26-299e-47d5-9240-edf3e79dd342@4f39.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/2913/\n数据来源: Clist.by
+DTEND:20260608T100000Z
+DTSTART:20260607T100000Z
+SUMMARY:[AtCoder] SSMCTF 2026 Qualifiers
+UID:7aa469b9-0e59-4112-b5ec-2e1ce503af46@7aa4.org
+URL:https://ctftime.org/event/2913/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3277/\n数据来源: Clist.by
+DTEND:20260521T235959Z
+DTSTART:20260519T000000Z
+SUMMARY:[AtCoder] Hack for a Change 2026 May: UN SDG 1
+UID:0d04df2d-14a2-4d80-82fb-2bc8cccf3c70@0d04.org
+URL:https://ctftime.org/event/3277/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://leetcode.com/contest/biweekly-contest-183\n数据来源: Clist.by
+DTEND:20260523T160000Z
+DTSTART:20260523T143000Z
+SUMMARY:[AtCoder] Biweekly Contest 183
+UID:27b14697-bfbd-4b8e-adc0-1147a9f00c68@27b1.org
+URL:https://leetcode.com/contest/biweekly-contest-183
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260607T110000Z
+DTSTART:20260607T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:62f5edea-06ce-4603-8175-753f228bad2d@62f5.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260531T110000Z
+DTSTART:20260531T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:d7f701cc-abed-4b5e-83fc-e6ca2fbea11a@d7f7.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3243/\n数据来源: Clist.by
+DTEND:20260530T190000Z
+DTSTART:20260530T090000Z
+SUMMARY:[AtCoder] WhiteHats TrojanCTF 2026
+UID:ed14254b-e5fb-4e72-bfec-a6911bf2e835@ed14.org
+URL:https://ctftime.org/event/3243/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://www.codechef.com/START239\n数据来源: Clist.by
+DTEND:20260520T163000Z
+DTSTART:20260520T143000Z
+SUMMARY:[AtCoder] Starters 239
+UID:fbe72ff6-5b10-4ac4-af03-b392b6d5c29b@fbe7.org
+URL:https://www.codechef.com/START239
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260520T110000Z
+DTSTART:20260520T040000Z
+SUMMARY:[AtCoder] Подготовка к отбору на IOI 2026
+UID:8f933cb0-820b-4b8e-aaa2-e9cdcf9323a2@8f93.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260628T110000Z
+DTSTART:20260628T040000Z
+SUMMARY:[AtCoder] Программирование - профессионалы (ком. 2026)
+UID:02fe2246-e57c-405f-a170-7c83ba2a3719@02fe.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/gym/106523\n数据来源: Clist.by
+DTEND:20260517T220000Z
+DTSTART:20260517T170000Z
+SUMMARY:[CF] VII UnBalloon Contest Mirror. arthur_9548
+UID:67f5d662-80c7-4ac0-b26c-56d995dfb1fc@67f5.org
+URL:https://codeforces.com/gym/106523
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://codeforces.com/contests/2228\n数据来源: Clist.by
+DTEND:20260516T165000Z
+DTSTART:20260516T143500Z
+SUMMARY:[CF] Codeforces Round 1098 (Div. 2)
+UID:b521f223-e0d4-4b3b-84ba-b6793ff54212@b521.org
+URL:https://codeforces.com/contests/2228
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://algoleague.com/contest/algorithm-competition-summer-camp-2026-qualification-round/\n数据来源: Clist.by
+DTEND:20260523T130000Z
+DTSTART:20260523T080000Z
+SUMMARY:[AtCoder] Algorithm Competition Summer Camp 2026 - Qualification Round ☀️ (unrated\, icpc\, individual)
+UID:c404b6c7-e198-4196-ba5a-98488caf8075@c404.org
+URL:https://algoleague.com/contest/algorithm-competition-summer-camp-2026-qualification-round/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3180/\n数据来源: Clist.by
+DTEND:20260706T000000Z
+DTSTART:20260704T000000Z
+SUMMARY:[AtCoder] No Hack No CTF 2026
+UID:9398c1b0-247e-4bbc-a7db-8c94072cfba5@9398.org
+URL:https://ctftime.org/event/3180/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc464\n数据来源: Clist.by
+DTEND:20260627T134000Z
+DTSTART:20260627T120000Z
+SUMMARY:[AtCoder] 第七回日本最強プログラマー学生選手権～Advance～ -予選- （AtCoder Beginner Contest 464）
+UID:5afba5ec-1430-4447-bb8a-563d568046b1@5afb.org
+URL:https://atcoder.jp/contests/abc464
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://midnightcodecup.org/\n数据来源: Clist.by
+DTEND:20260705T000000Z
+DTSTART:20260704T000000Z
+SUMMARY:[AtCoder] Midnight Code Cup 2026. Finals
+UID:d1cae8df-a931-4509-a77a-94ea174c3714@d1ca.org
+URL:https://midnightcodecup.org/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://dl.gsu.by/LC.jsp?Type=-1&lng=ru\n数据来源: Clist.by
+DTEND:20260519T090000Z
+DTSTART:20260519T070000Z
+SUMMARY:[AtCoder] МультиОлимпиада «Математика и технологии программирования» (март 2026)
+UID:63cb1469-e903-4002-baa7-5a6bcc176921@63cb.org
+URL:https://dl.gsu.by/LC.jsp?Type=-1&lng=ru
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3125/\n数据来源: Clist.by
+DTEND:20260614T230000Z
+DTSTART:20260613T130000Z
+SUMMARY:[AtCoder] CyberSci Nationals 2025-2026
+UID:faf23559-2638-4e68-aa11-130af9c776cd@faf2.org
+URL:https://ctftime.org/event/3125/
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://leetcode.com/contest/weekly-contest-502\n数据来源: Clist.by
+DTEND:20260517T040000Z
+DTSTART:20260517T023000Z
+SUMMARY:[AtCoder] Weekly Contest 502
+UID:984169dd-533a-4a73-b756-c782f99781ed@9841.org
+URL:https://leetcode.com/contest/weekly-contest-502
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://atcoder.jp/contests/abc460\n数据来源: Clist.by
+DTEND:20260530T134000Z
+DTSTART:20260530T120000Z
+SUMMARY:[AtCoder] AtCoder Beginner Contest 460
+UID:45450926-aeb4-4124-afd6-e429df44d5e5@4545.org
+URL:https://atcoder.jp/contests/abc460
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:比赛链接: https://ctftime.org/event/3041/\n数据来源: Clist.by
+DTEND:20260606T220000Z
+DTSTART:20260605T100000Z
+SUMMARY:[AtCoder] GPN CTF 2026
+UID:c691c05c-7590-4b90-94c8-a6bba98280ce@c691.org
+URL:https://ctftime.org/event/3041/
+END:VEVENT
+END:VCALENDAR
