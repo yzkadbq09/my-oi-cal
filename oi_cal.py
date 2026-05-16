@@ -12,9 +12,8 @@ CLIST_API_KEY = os.environ.get("CLIST_API_KEY", "你的_CLIST_API_KEY")
 OUTPUT_ICS_PATH = "oi_competitions.ics"
 # ============================================
 
-
 def get_clist_contests():
-    """获取 Codeforces 和 AtCoder 的比赛并按规则高强度过滤"""
+    """获取 Codeforces 和 AtCoder 的比赛并高强度过滤"""
     url = "https://clist.by/api/v4/contest/"
     now = datetime.datetime.now(datetime.timezone.utc)
     end_time = now + datetime.timedelta(days=60)
@@ -24,7 +23,7 @@ def get_clist_contests():
         "start__gte": now.strftime("%Y-%m-%dT%H:%M:%S"),
         "start__lte": end_time.strftime("%Y-%m-%dT%H:%M:%S"),
         "order_by": "start",
-        "limit": 100,
+        "limit": 100
     }
     headers = {"Authorization": f"ApiKey {CLIST_USERNAME}:{CLIST_API_KEY}"}
 
@@ -32,9 +31,7 @@ def get_clist_contests():
         if not CLIST_USERNAME or "你的" in CLIST_USERNAME:
             response = requests.get(url, params=params, timeout=10)
         else:
-            response = requests.get(
-                url, params=params, headers=headers, timeout=10
-            )
+            response = requests.get(url, params=params, headers=headers, timeout=10)
 
         if response.status_code == 200:
             return response.json().get("objects", [])
@@ -42,26 +39,34 @@ def get_clist_contests():
         print(f"获取 Clist 比赛失败: {e}")
     return []
 
-
 def get_luogu_contests():
-    """多源轮询获取洛谷比赛，完美对齐洛谷原生时间戳，过滤不属于洛谷的杂讯"""
+    """通过高可用公共代理网关直接抓取洛谷官方原生比赛列表，彻底免除 Actions IP 封锁与杂讯"""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "x-requested-with": "XMLHttpRequest"
     }
-    contests = []
-    now_ts = int(datetime.datetime.now().timestamp())
+    
+    # 使用著名的、对开放网络极其友好的 Scraper 代理网关，直接转发洛谷原生的 API 请求
+    # 这样既能拿到 100% 正确的梦熊/官方入门赛数据，又不会被洛谷判定为海外 Actions 机器拒绝
+    target_url = "https://www.luogu.com.cn/contest/list?_contentOnly=1"
+    proxy_url = f"https://api.allorigins.win/get?url={requests.utils.quote(target_url)}"
 
-    # 优先方案：直接死磕洛谷官方 API（只要有一次成功就能拿到 100% 正确的近期比赛）
+    contests = []
     try:
-        url = "https://www.luogu.com.cn/contest/list?_contentOnly=1"
-        res = requests.get(url, headers=headers, timeout=10)
-        if res.status_code == 200:
-            raw_contests = res.json().get("currentData", {}).get("contests", {}).get("result", [])
+        response = requests.get(proxy_url, headers=headers, timeout=15)
+        if response.status_code == 200:
+            # allorigins 会把返回内容包在 "contents" 字符串中
+            contents_str = response.json().get("contents", "")
+            data = json.loads(contents_str)
+            
+            raw_contests = data.get("currentData", {}).get("contests", {}).get("result", [])
+            now_ts = int(datetime.datetime.now().timestamp())
+
             for c in raw_contests:
-                start_ts = int(c.get("startTime"))
-                end_ts = int(c.get("endTime"))
+                start_ts = int(c.get("startTime", 0))
+                end_ts = int(c.get("endTime", 0))
                 
+                # 只保留未开始的比赛
                 if start_ts > now_ts:
                     contests.append({
                         "event": f"[洛谷] {c.get('name')}",
@@ -70,42 +75,13 @@ def get_luogu_contests():
                         "href": f"https://www.luogu.com.cn/contest/{c.get('id')}"
                     })
             if contests:
-                print("【成功】通过官方 API 成功获取到近期洛谷比赛")
+                print(f"【成功】通过全源网关成功拿到 {len(contests)} 场原生洛谷比赛！")
                 return contests
     except Exception as e:
-        print(f"官方 API 尝试失败（Actions 环境正常现象）: {e}")
-
-    # 保底方案：通过你的合法的 Clist 凭证去捞，但高强度过滤掉非洛谷的域名的垃圾数据
-    try:
-        url_clist = "https://clist.by/api/v4/contest/"
-        utc_now = datetime.datetime.now(datetime.timezone.utc)
-        params = {
-            "resource_ids": "1317",  # 洛谷资源 ID
-            "start__gte": utc_now.strftime("%Y-%m-%dT%H:%M:%S"),
-            "order_by": "start",
-            "limit": 50
-        }
-        headers_clist = {"Authorization": f"ApiKey {CLIST_USERNAME}:{CLIST_API_KEY}"}
-        res = requests.get(url_clist, params=params, headers=headers_clist, timeout=10)
+        print(f"网关抓取洛谷失败: {e}")
         
-        if res.status_code == 200:
-            objects = res.json().get("objects", [])
-            for item in objects:
-                # 核心过滤：比赛的链接必须包含 luogu.com 才是真正的洛谷赛，剔除俄罗斯网站垃圾数据
-                if "luogu.com" in item.get("href", "") or "luogu.com" in item.get("url",个人： ""):
-                    contests.append({
-                        "event": f"[洛谷] {item['event']}",
-                        "start": item["start"],
-                        "end": item["end"],
-                        "href": item["href"]
-                    })
-            if contests:
-                print(f"【成功】通过 Clist 保底源成功提取到 {len(contests)} 场洛谷原生比赛")
-                return contests
-    except Exception as e:
-        print(f"Clist 捞取洛谷失败: {e}")
-
     return contests
+
 def main():
     c = Calendar()
 
@@ -122,38 +98,30 @@ def main():
 
         if is_cf:
             # CF 过滤：只保留包含 div.1, div.2 或 div. 1+2 的比赛
-            # 使用正则兼容 "div. 1", "div.2", "div.1+div.2" 等写法
-            if re.search(r"div\.\s*[12]", title_lower):
-                # 提取出具体的 Div 信息让标题更短，比如 "[CF] Codeforces Round 900 (Div. 2)" -> "[CF] Round 900 (Div. 2)"
-                short_title = title.replace(
-                    "Codeforces ", ""
-                )  # 去掉冗余的 Codeforces 字样
+            if re.search(r"div\.\s*[12]", title_lower) or "1 + 2" in title_lower:
+                short_title = title.replace("Codeforces ", "")
                 final_title = f"[CF] {short_title}"
             else:
-                continue  # 过滤掉 div3, div4, edu 等
+                continue
         else:
             # AtCoder 过滤：只保留 ABC, ARC, AGC
-            # 使用正则匹配独立的 abc, arc, agc 单词
             match = re.search(r"\b(abc|arc|agc)\d+\b", title_lower)
             if match:
-                # 缩写为大写的 ABC/ARC/AGC + 期数，例如 "AtCoder Beginner Contest 350" -> "[AT] ABC350"
                 final_title = f"[AT] {match.group(0).upper()}"
             else:
-                # 兼容部分直接写了全称但没连着写数字的情况
                 if "beginner" in title_lower:
-                    final_title = f"[AT] ABC"
+                    final_title = "[AT] ABC"
                 elif "regular" in title_lower:
-                    final_title = f"[AT] ARC"
+                    final_title = "[AT] ARC"
                 elif "grand" in title_lower:
-                    final_title = f"[AT] AGC"
+                    final_title = "[AT] AGC"
                 else:
-                    continue  # 其余比赛不要
+                    continue
 
-        # 处理时间跨天问题
-        start_dt = datetime.datetime.fromisoformat(item["start"])
-        end_dt = datetime.datetime.fromisoformat(item["end"])
+        start_dt = datetime.datetime.fromisoformat(item["start"].replace("Z", "+00:00"))
+        end_dt = datetime.datetime.fromisoformat(item["end"].replace("Z", "+00:00"))
 
-        # 如果结束日期和开始日期不在同一天，强行把结束时间改成和开始时间同一天（只改日期，保留小时分钟，或者直接设为比赛开始后2小时）
+        # 跨天比赛强行修改结束时间
         if start_dt.date() != end_dt.date():
             end_dt = start_dt + datetime.timedelta(hours=2)
 
@@ -164,7 +132,7 @@ def main():
         e.url = item["href"]
         c.events.add(e)
 
-    # 处理洛谷（保持原样，如果有跨天比赛也过滤一下）
+    # 处理洛谷
     for item in luogu_data:
         start_dt = datetime.datetime.fromisoformat(item["start"])
         end_dt = datetime.datetime.fromisoformat(item["end"])
@@ -181,8 +149,7 @@ def main():
 
     with open(OUTPUT_ICS_PATH, "w", encoding="utf-8") as f:
         f.writelines(c.serialize_iter())
-    print("日历精简版生成成功！")
-
+    print("日历最终精简版生成成功！")
 
 if __name__ == "__main__":
     main()
