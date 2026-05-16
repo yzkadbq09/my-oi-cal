@@ -44,111 +44,68 @@ def get_clist_contests():
 
 
 def get_luogu_contests():
-    """多源轮询获取洛谷比赛，彻底解决 GitHub Actions 环境下抓不到的问题"""
+    """多源轮询获取洛谷比赛，完美对齐洛谷原生时间戳，过滤不属于洛谷的杂讯"""
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "x-requested-with": "XMLHttpRequest"
     }
+    contests = []
+    now_ts = int(datetime.datetime.now().timestamp())
 
-    # 方案 1：使用公开的独立 OI 比赛日历源（对海外 Actions 虚拟机极其友好）
+    # 优先方案：直接死磕洛谷官方 API（只要有一次成功就能拿到 100% 正确的近期比赛）
     try:
-        url1 = "https://api.m60.top/luogu/contest"
-        res = requests.get(url1, headers=headers, timeout=8)
+        url = "https://www.luogu.com.cn/contest/list?_contentOnly=1"
+        res = requests.get(url, headers=headers, timeout=10)
         if res.status_code == 200:
-            data = res.json()
-            raw = data.get("data", []) if isinstance(data, dict) else data
-            contests = []
-            for c in raw:
-                # 兼容可能的时间戳格式（有些镜像转成了秒，有些是毫秒）
-                st = c.get("startTime") or c.get("start")
-                et = c.get("endTime") or c.get("end")
-                if isinstance(st, str):
-                    continue  # 略过非标准格式
-
-                if st > int(datetime.datetime.now().timestamp()):
-                    contests.append(
-                        {
-                            "event": f"[洛谷] {c.get('name') or c.get('title')}",
-                            "start": datetime.datetime.fromtimestamp(
-                                st, datetime.timezone.utc
-                            ).isoformat(),
-                            "end": datetime.datetime.fromtimestamp(
-                                et, datetime.timezone.utc
-                            ).isoformat(),
-                            "href": f"https://www.luogu.com.cn/contest/{c.get('id')}",
-                        }
-                    )
+            raw_contests = res.json().get("currentData", {}).get("contests", {}).get("result", [])
+            for c in raw_contests:
+                start_ts = int(c.get("startTime"))
+                end_ts = int(c.get("endTime"))
+                
+                if start_ts > now_ts:
+                    contests.append({
+                        "event": f"[洛谷] {c.get('name')}",
+                        "start": datetime.datetime.fromtimestamp(start_ts, datetime.timezone.utc).isoformat(),
+                        "end": datetime.datetime.fromtimestamp(end_ts, datetime.timezone.utc).isoformat(),
+                        "href": f"https://www.luogu.com.cn/contest/{c.get('id')}"
+                    })
             if contests:
-                print("通过方案 1 成功获取洛谷比赛")
+                print("【成功】通过官方 API 成功获取到近期洛谷比赛")
                 return contests
-    except:
-        pass
+    except Exception as e:
+        print(f"官方 API 尝试失败（Actions 环境正常现象）: {e}")
 
-    # 方案 2：使用现成的、专门针对全局算法竞赛的第三方聚合日历源（格式为解析好的经典格式）
+    # 保底方案：通过你的合法的 Clist 凭证去捞，但高强度过滤掉非洛谷的域名的垃圾数据
     try:
-        url2 = "https://kontests.net/api/v1/leet_code"  # 这是一个备用结构示例
-        # 针对洛谷，我们直接向更加宽松的智能网关请求
-        url_bak = "https://llor.top/api/luogu"  # 国内 OI 团队维护的宽松网关
-        res = requests.get(url_bak, headers=headers, timeout=8)
-        if res.status_code == 200:
-            raw = res.json().get("games", [])
-            contests = []
-            for c in raw:
-                # 统一解析逻辑
-                st = c.get("start_time")
-                if st > int(datetime.datetime.now().timestamp()):
-                    contests.append(
-                        {
-                            "event": f"[洛谷] {c.get('title')}",
-                            "start": datetime.datetime.fromtimestamp(
-                                st, datetime.timezone.utc
-                            ).isoformat(),
-                            "end": datetime.datetime.fromtimestamp(
-                                c.get("end_time"), datetime.timezone.utc
-                            ).isoformat(),
-                            "href": c.get("link", "https://www.luogu.com.cn/"),
-                        }
-                    )
-            if contests:
-                print("通过方案 2 成功获取洛谷比赛")
-                return contests
-    except:
-        pass
-
-    # 方案 3：直接从 Clist 官方捞取洛谷（其实 Clist 也是支持 Luogu 的，ID 是 1317）
-    # 这是最稳的底牌，因为你的 Clist 凭证是完全合法的
-    try:
-        url3 = "https://clist.by/api/v4/contest/"
-        now = datetime.datetime.now(datetime.timezone.utc)
+        url_clist = "https://clist.by/api/v4/contest/"
+        utc_now = datetime.datetime.now(datetime.timezone.utc)
         params = {
-            "resource_ids": "1317",  # 1317 是 Clist 里 Luogu 的独立 ID
-            "start__gte": now.strftime("%Y-%m-%dT%H:%M:%S"),
+            "resource_ids": "1317",  # 洛谷资源 ID
+            "start__gte": utc_now.strftime("%Y-%m-%dT%H:%M:%S"),
             "order_by": "start",
+            "limit": 50
         }
-        headers_clist = {
-            "Authorization": f"ApiKey {CLIST_USERNAME}:{CLIST_API_KEY}"
-        }
-        res = requests.get(
-            url3, params=params, headers=headers_clist, timeout=10
-        )
+        headers_clist = {"Authorization": f"ApiKey {CLIST_USERNAME}:{CLIST_API_KEY}"}
+        res = requests.get(url_clist, params=params, headers=headers_clist, timeout=10)
+        
         if res.status_code == 200:
             objects = res.json().get("objects", [])
-            contests = []
             for item in objects:
-                contests.append(
-                    {
+                # 核心过滤：比赛的链接必须包含 luogu.com 才是真正的洛谷赛，剔除俄罗斯网站垃圾数据
+                if "luogu.com" in item.get("href", "") or "luogu.com" in item.get("url",个人： ""):
+                    contests.append({
                         "event": f"[洛谷] {item['event']}",
                         "start": item["start"],
                         "end": item["end"],
-                        "href": item["href"],
-                    }
-                )
+                        "href": item["href"]
+                    })
             if contests:
-                print("通过 Clist 官方成功捞取到洛谷比赛")
+                print(f"【成功】通过 Clist 保底源成功提取到 {len(contests)} 场洛谷原生比赛")
                 return contests
     except Exception as e:
-        print(f"方案 3 捞取洛谷失败: {e}")
+        print(f"Clist 捞取洛谷失败: {e}")
 
-    return []
+    return contests
 def main():
     c = Calendar()
 
