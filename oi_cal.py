@@ -1,25 +1,21 @@
 import datetime
 import json
+import os
 import re
 from ics import Calendar, Event
 import pytz
 import requests
 
 # ================= 配置区域 =================
-# 1. Clist.by 的 API 凭证 (请去 https://clist.by/api/v4/doc/ 注册账号免费获取)
-# 如果不填，部分请求可能会受限
-CLIST_USERNAME = "yzkadbq"
-CLIST_API_KEY = "b7af68a112d7a858a8a0d92b6bb9fcf1da75e092 "
-
-# 2. 生成的 ics 文件保存路径（如果运行可以写绝对路径，如果在服务器可以挂在 Web 服务下）
+CLIST_USERNAME = os.environ.get("CLIST_USERNAME", "你的_CLIST_用户名")
+CLIST_API_KEY = os.environ.get("CLIST_API_KEY", "你的_CLIST_API_KEY")
 OUTPUT_ICS_PATH = "oi_competitions.ics"
 # ============================================
 
 
 def get_clist_contests():
-    """获取 Codeforces 和 AtCoder 的比赛"""
+    """获取 Codeforces 和 AtCoder 的比赛并按规则高强度过滤"""
     url = "https://clist.by/api/v4/contest/"
-    # 过滤出未来两个月内的 CF (resource_id=1) 和 AtCoder (resource_id=93)
     now = datetime.datetime.now(datetime.timezone.utc)
     end_time = now + datetime.timedelta(days=60)
 
@@ -33,7 +29,6 @@ def get_clist_contests():
     headers = {"Authorization": f"ApiKey {CLIST_USERNAME}:{CLIST_API_KEY}"}
 
     try:
-        # 如果没有填写凭证，尝试匿名访问（有频率限制）
         if not CLIST_USERNAME or "你的" in CLIST_USERNAME:
             response = requests.get(url, params=params, timeout=10)
         else:
@@ -50,7 +45,6 @@ def get_clist_contests():
 
 def get_luogu_contests():
     """获取洛谷比赛"""
-    # 洛谷有反爬，需要带上通用的 User-Agent
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "x-requested-with": "XMLHttpRequest",
@@ -62,14 +56,11 @@ def get_luogu_contests():
         response = requests.get(url, headers=headers, timeout=10)
         if response.status_code == 200:
             data = response.json()
-            # 洛谷返回的比赛列表
             raw_contests = data.get("currentData", {}).get(
                 "contests", {}
             ).get("result", [])
 
             for c in raw_contests:
-                # 状态 0 或 1 通常代表未开始/进行中，这里只拿未开始的
-                # 洛谷的时间戳是秒
                 start_ts = c.get("startTime")
                 end_ts = c.get("endTime")
                 now_ts = int(datetime.datetime.now().timestamp())
@@ -95,44 +86,79 @@ def get_luogu_contests():
 def main():
     c = Calendar()
 
-    # 1. 抓取数据
-    print("正在获取 Codeforces & AtCoder 比赛...")
     clist_data = get_clist_contests()
-    print(f"成功获取 {len(clist_data)} 场 CF/AtCoder 比赛")
-
-    print("正在获取洛谷比赛...")
     luogu_data = get_luogu_contests()
-    print(f"成功获取 {len(luogu_data)} 场洛谷比赛")
 
-    # 2. 解析并解析并写入 iCalendar
-    # 写入 CF 和 AtCoder
+    # 处理 CF 和 AtCoder
     for item in clist_data:
-        e = Event()
-        # 润色标题，美化显示
-        platform = "CF" if "codeforces" in item["host"] else "AtCoder"
-        e.name = f"[{platform}] {item['event']}"
+        title = item["event"]
+        title_lower = title.lower()
+        is_cf = "codeforces" in item["host"]
 
-        # Clist 返回的时间已经是 UTC 字符串
-        e.begin = item["start"]
-        e.end = item["end"]
+        final_title = ""
+
+        if is_cf:
+            # CF 过滤：只保留包含 div.1, div.2 或 div. 1+2 的比赛
+            # 使用正则兼容 "div. 1", "div.2", "div.1+div.2" 等写法
+            if re.search(r"div\.\s*[12]", title_lower):
+                # 提取出具体的 Div 信息让标题更短，比如 "[CF] Codeforces Round 900 (Div. 2)" -> "[CF] Round 900 (Div. 2)"
+                short_title = title.replace(
+                    "Codeforces ", ""
+                )  # 去掉冗余的 Codeforces 字样
+                final_title = f"[CF] {short_title}"
+            else:
+                continue  # 过滤掉 div3, div4, edu 等
+        else:
+            # AtCoder 过滤：只保留 ABC, ARC, AGC
+            # 使用正则匹配独立的 abc, arc, agc 单词
+            match = re.search(r"\b(abc|arc|agc)\d+\b", title_lower)
+            if match:
+                # 缩写为大写的 ABC/ARC/AGC + 期数，例如 "AtCoder Beginner Contest 350" -> "[AT] ABC350"
+                final_title = f"[AT] {match.group(0).upper()}"
+            else:
+                # 兼容部分直接写了全称但没连着写数字的情况
+                if "beginner" in title_lower:
+                    final_title = f"[AT] ABC"
+                elif "regular" in title_lower:
+                    final_title = f"[AT] ARC"
+                elif "grand" in title_lower:
+                    final_title = f"[AT] AGC"
+                else:
+                    continue  # 其余比赛不要
+
+        # 处理时间跨天问题
+        start_dt = datetime.datetime.fromisoformat(item["start"])
+        end_dt = datetime.datetime.fromisoformat(item["end"])
+
+        # 如果结束日期和开始日期不在同一天，强行把结束时间改成和开始时间同一天（只改日期，保留小时分钟，或者直接设为比赛开始后2小时）
+        if start_dt.date() != end_dt.date():
+            end_dt = start_dt + datetime.timedelta(hours=2)
+
+        e = Event()
+        e.name = final_title
+        e.begin = start_dt.isoformat()
+        e.end = end_dt.isoformat()
         e.url = item["href"]
-        e.description = f"比赛链接: {item['href']}\n数据来源: Clist.by"
         c.events.add(e)
 
-    # 写入洛谷
+    # 处理洛谷（保持原样，如果有跨天比赛也过滤一下）
     for item in luogu_data:
+        start_dt = datetime.datetime.fromisoformat(item["start"])
+        end_dt = datetime.datetime.fromisoformat(item["end"])
+
+        if start_dt.date() != end_dt.date():
+            end_dt = start_dt + datetime.timedelta(hours=2)
+
         e = Event()
         e.name = item["event"]
-        e.begin = item["start"]
-        e.end = item["end"]
+        e.begin = start_dt.isoformat()
+        e.end = end_dt.isoformat()
         e.url = item["href"]
-        e.description = f"比赛链接: {item['href']}\n数据来源: 洛谷"
         c.events.add(e)
 
-    # 3. 保存文件
     with open(OUTPUT_ICS_PATH, "w", encoding="utf-8") as f:
         f.writelines(c.serialize_iter())
-    print(f"日历文件已成功生成: {OUTPUT_ICS_PATH}")
+    print("日历精简版生成成功！")
 
 
 if __name__ == "__main__":
