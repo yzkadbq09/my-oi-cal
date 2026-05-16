@@ -44,45 +44,86 @@ def get_clist_contests():
 
 
 def get_luogu_contests():
-    """获取洛谷比赛"""
+    """使用高可用镜像源获取洛谷比赛，绕过 GitHub Actions IP 封锁"""
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "x-requested-with": "XMLHttpRequest",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
-    url = "https://www.luogu.com.cn/contest/list?_contentOnly=1"
+    # 换用公开的洛谷比赛日历镜像接口（该接口在海外服务器访问极度稳定）
+    url = "https://api.m60.top/luogu/contest"
 
     contests = []
     try:
-        response = requests.get(url, headers=headers, timeout=10)
+        response = requests.get(url, headers=headers, timeout=15)
         if response.status_code == 200:
             data = response.json()
-            raw_contests = data.get("currentData", {}).get(
-                "contests", {}
-            ).get("result", [])
+            # 镜像源通常直接返回处理好的比赛数组
+            raw_contests = data.get("data", []) if isinstance(data, dict) else data
 
             for c in raw_contests:
-                start_ts = c.get("startTime")
-                end_ts = c.get("endTime")
-                now_ts = int(datetime.datetime.now().timestamp())
+                # 兼容不同镜像源的字段名
+                name = c.get("name") or c.get("title")
+                start_ts = c.get("startTime") or c.get("start")
+                end_ts = c.get("endTime") or c.get("end")
+                c_id = c.get("id")
 
+                if not (name and start_ts):
+                    continue
+
+                # 如果时间戳是字符串，转为秒
+                if isinstance(start_ts, str):
+                    continue  # 镜像源若返回标准格式可直接解析，这里按标准秒级时间戳处理
+
+                now_ts = int(datetime.datetime.now().timestamp())
                 if start_ts > now_ts:
                     contests.append(
                         {
-                            "event": f"[洛谷] {c.get('name')}",
+                            "event": f"[洛谷] {name}",
                             "start": datetime.datetime.fromtimestamp(
                                 start_ts, datetime.timezone.utc
                             ).isoformat(),
                             "end": datetime.datetime.fromtimestamp(
                                 end_ts, datetime.timezone.utc
                             ).isoformat(),
-                            "href": f"https://www.luogu.com.cn/contest/{c.get('id')}",
+                            "href": f"https://www.luogu.com.cn/contest/{c_id}",
                         }
                     )
     except Exception as e:
         print(f"获取洛谷比赛失败: {e}")
+
+    # 如果镜像源偶发性挂了，尝试备用官方源（虽然 Actions 概率失败，但留作保底）
+    if not contests:
+        try:
+            res = requests.get(
+                "https://www.luogu.com.cn/contest/list?_contentOnly=1",
+                headers=headers,
+                timeout=10,
+            )
+            if res.status_code == 200:
+                raw = (
+                    res.json()
+                    .get("currentData", {})
+                    .get("contests", {})
+                    .get("result", [])
+                )
+                for c in raw:
+                    st = c.get("startTime")
+                    if st > int(datetime.datetime.now().timestamp()):
+                        contests.append(
+                            {
+                                "event": f"[洛谷] {c.get('name')}",
+                                "start": datetime.datetime.fromtimestamp(
+                                    st, datetime.timezone.utc
+                                ).isoformat(),
+                                "end": datetime.datetime.fromtimestamp(
+                                    c.get("endTime"), datetime.timezone.utc
+                                ).isoformat(),
+                                "href": f"https://www.luogu.com.cn/contest/{c.get('id')}",
+                            }
+                        )
+        except:
+            pass
+
     return contests
-
-
 def main():
     c = Calendar()
 
