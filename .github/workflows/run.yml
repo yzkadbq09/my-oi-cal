@@ -12,6 +12,37 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Fetch Luogu Contests via Native Node Fetch
+      run: |
+        node -e "
+        const fs = require('fs');
+        fetch('https://www.luogu.com.cn/contest/list?_contentOnly=1', {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/json',
+            'x-requested-with': 'XMLHttpRequest'
+          }
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('HTTP error ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          fs.writeFileSync('luogu.json', JSON.stringify(data, null, 2));
+          console.log('洛谷原始赛程 JSON 抓取成功！');
+        })
+        .catch(err => {
+          console.error('抓取洛谷数据失败:', err);
+          // 哪怕失败也写入一个空的结构防止 Python 崩溃
+          fs.writeFileSync('luogu.json', JSON.stringify({currentData:{contests:{result:[]}}}));
+        });
+        "
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
