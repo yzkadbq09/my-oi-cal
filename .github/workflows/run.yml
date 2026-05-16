@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/platform-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: '3.12'
 
@@ -24,7 +24,6 @@ jobs:
     - name: Run script
       run: python oi_cal.py
       env:
-        # 这里的凭证可以在 GitHub 仓库的 Settings -> Secrets 中安全配置
         CLIST_USERNAME: ${{ secrets.CLIST_USERNAME }}
         CLIST_API_KEY: ${{ secrets.CLIST_API_KEY }}
 
