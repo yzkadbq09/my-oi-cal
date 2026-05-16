@@ -1,0 +1,37 @@
+name: Update OI Calendar
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 北京时间每天早上 6 点自动运行
+  workflow_dispatch: # 允许手动点击触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/platform-python@v1
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install requests ics pytz
+
+    - name: Run script
+      run: python oi_cal.py
+      env:
+        # 这里的凭证可以在 GitHub 仓库的 Settings -> Secrets 中安全配置
+        CLIST_USERNAME: ${{ secrets.CLIST_USERNAME }}
+        CLIST_API_KEY: ${{ secrets.CLIST_API_KEY }}
+
+    - name: Commit and Push
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add oi_competitions.ics
+        git commit -m "Update calendar" || exit 0
+        git push
